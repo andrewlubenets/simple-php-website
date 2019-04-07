@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: simple-php-website
+spec:
+  selector:
+    app: simple-php-website
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-php-website
+  labels:
+    app: simple-php-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-php-website
+  template:
+    metadata:
+      labels:
+        app: simple-php-website
+    spec:
+      imagePullSecrets:
+      - name: deltaapps
+      containers:
+        - containerPort: 8080
