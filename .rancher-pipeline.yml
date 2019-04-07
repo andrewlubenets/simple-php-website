@@ -5,7 +5,7 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: php-example:${CICD_EXECUTION_SEQUENCE}
-      registry: deltaapps
+      registry: deltaapps/test
 - name: Deploy
   steps:
   - applyYamlConfig:
