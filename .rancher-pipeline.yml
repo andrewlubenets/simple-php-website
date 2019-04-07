@@ -5,7 +5,8 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: php:${CICD_EXECUTION_SEQUENCE}
-      registry: deltaapps/php
+      registry: deltaapps
+      pushRemote: true
 - name: Deploy
   steps:
   - applyYamlConfig:
